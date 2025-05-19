@@ -1,0 +1,80 @@
+services:
+  solver-1:
+    image: ammargamal001/solver
+    container_name: solver-1
+    hostname: solver-1
+    volumes:
+      - ./Logs:/app/logs
+    ports:
+      - target: 8080
+        published: 5501
+    networks:
+      - solvers-network
+  solver-2:
+    image: ammargamal001/solver
+    container_name: solver-2
+    hostname: solver-2
+    volumes:
+      - ./Logs:/app/logs
+    ports:
+      - target: 8080
+        published: 5502
+    networks:
+      - solvers-network
+  solver-3:
+    image: ammargamal001/solver
+    container_name: solver-3
+    hostname: solver-3
+    volumes:
+      - ./Logs:/app/logs
+    ports:
+      - target: 8080
+        published: 5503
+    networks:
+      - solvers-network
+  solver-4:
+    image: ammargamal001/solver
+    container_name: solver-4
+    hostname: solver-4
+    volumes:
+      - ./Logs:/app/logs
+    ports:
+      - target: 8080
+        published: 5504
+    networks:
+      - solvers-network
+  solver-5:
+    image: ammargamal001/solver
+    container_name: solver-5
+    hostname: solver-5
+    volumes:
+      - ./Logs:/app/logs
+    ports:
+      - target: 8080
+        published: 5505
+    networks:
+      - solvers-network
+  load-balancer:
+    image: ammargamal001/loadbalancer
+    container_name: load-balancer
+    hostname: load-balancer
+    volumes:
+      - ./Logs:/app/logs
+    ports:
+      - target: 8080
+        published: 4500
+    networks:
+      - solvers-network
+  test-purpose:
+    image: ammargamal001/test
+    hostname: test
+    container_name: test
+    networks:
+      - solvers-network
+    stdin_open: true
+    tty: true
+
+networks:
+  solvers-network:
+
+
